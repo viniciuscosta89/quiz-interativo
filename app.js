@@ -24,12 +24,11 @@ Ps: se você não conseguiu fazer tudo o que foi pedido acima, abra a issue mesm
 
 const form = document.querySelector('.quiz-form')
 const scoreText = document.querySelector('.score')
-const correctAnswers = ['B', 'B', 'B', 'B',]
+const correctAnswers = ['B', 'D', 'A', 'C',]
+const result = document.querySelector('.result')
+let score = 0
 
-form.addEventListener('submit', event => {
-  event.preventDefault()
-
-  let score = 0
+const checkAnswers = () => {
 
   const userAnswers = [
     form.inputQuestion1.value,
@@ -43,8 +42,43 @@ form.addEventListener('submit', event => {
       score += 25
     }
   })
+}
 
-  scoreText.textContent = score
+const incrementCounter = () => {
+  let counter = 0
 
-})
+  const timer = setInterval(() => {
+    if (counter === score) {
+      clearInterval(timer)
+    }
+
+    scoreText.innerText = `${counter}%`
+
+    setTimeout(() => {
+      counter++
+    }, 500);
+  }, 10);
+}
+
+const goUpSmoothly = (top, left) => {
+  scrollTo({
+    top: top,
+    left: left,
+    behavior: 'smooth'
+  })
+}
+
+const submitAnswers = event => {
+  event.preventDefault()
+
+  checkAnswers()
+
+  goUpSmoothly(0, 0)
+
+  result.classList.remove('d-none')
+
+  incrementCounter()
+}
+
+form.addEventListener('submit', submitAnswers)
 
