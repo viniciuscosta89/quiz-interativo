@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Quiz | Você consegue acertar qual é a série pelo título em português de Portugal?</title>
+</head>
+<body>
+  <div class="intro py-3 bg-secondary text-center">
+    <div class="container">
+      <h2 class="text-light display-3 my-4">Quiz</h2>
+    </div>
+  </div>
+
+  <div class="quiz py-4 bg-light">
+    <div class="container">
+      <h2 class="my-5 text-black">Você consegue acertar qual é a série pelo título em português de Portugal?</h2>
+
+      <form class="quiz-form text-dark">
+        <div class="my-5">
+          <p class="lead font-weight-normal">1. "Ruptura Total" é o nome dado para a série:</p>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion1" value="A" checked>
+              Máquina Mortífera
+            </label>
+          </div>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion1" value="B">
+              Breaking Bad
+            </label>
+          </div>
+        </div>
+
+        <div class="my-5">
+          <p class="lead font-weight-normal">2. "Patriarca de Estilo" é o nome dado para a série de comédia:</p>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion2" value="A" checked>
+              Um Maluco no Pedaço
+            </label>
+          </div>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion2" value="B">
+              Eu, A Patroa e As Crianças
+            </label>
+          </div>
+        </div>
+
+        <div class="my-5">
+          <p class="lead font-weight-normal">3. "Foi Assim Que Aconteceu" é o título de:</p>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion3" value="A" checked>
+              How To Get Away With Murder
+            </label>
+          </div>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion3" value="B">
+              How I Met Your Mother
+            </label>
+          </div>
+        </div>
+
+        <div class="my-5">
+          <p class="lead font-weight-normal">4. "Ficheiros Secretos" é a famosa série:</p>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion4" value="A" checked>
+              CSI
+            </label>
+          </div>
+          <div class="form-check my-2 text-black-50">
+            <label class="form-check-label">
+              <input type="radio" name="inputQuestion4" value="B">
+              Arquivo X
+            </label>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button class="btn bg-secondary text-light">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="intro py-2 bg-info text-center">
+    <div class="container">
+      <h2 class="text-light font-weight-light">Score: <strong class="score"></strong></h2>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
