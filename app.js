@@ -1,44 +1,25 @@
-/*
-Este exercício será um pouquinho diferente dos anteriores.
-
-Seu desafio é desenvolver uma versão do quiz que:
-
-- Aborda um tema diferente (não pode ser de filmes);
-- Tem um tema de cores diferente do que foi apresentado na aula;
-- Exibe na tela a pontuação que o usuário fez. Não há certo ou errado, apenas faça. Essa exibição de pontos é uma das implementações que faremos na próxima aula =D
-
-Independente se você já fez o quiz dos filmes enquanto acompanhava a aula, tente fazer esse exercício sem rever partes da aula.
-
-É importante que a sua versão do quiz seja feita apenas com o conteúdo que vimos até aqui.
-
-Depois de fazer o que foi pedido acima, crie um repositório no GitHub para a sua aplicação e abra uma issue no repositório do curso com:
-
-- O link da sua versão do quiz;
-- Quais foram as suas maiores dúvidas ou dificuldades durante a execução desse exercício;
-- Quais foram as suas menores dificuldades durante a execução desse exercício.
-
-Link do repositório do curso: https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo/issues
-
-Ps: se você não conseguiu fazer tudo o que foi pedido acima, abra a issue mesmo assim =)
-*/
-
 const form = document.querySelector('.quiz-form')
 const scoreText = document.querySelector('.score')
 const correctAnswers = ['B', 'D', 'A', 'C',]
-const result = document.querySelector('.result')
+const resultContainer = document.querySelector('.result')
 let score = 0
 
-const checkAnswers = () => {
+const getUserAnswers = () => {
+  let userAnswers = []
 
-  const userAnswers = [
-    form.inputQuestion1.value,
-    form.inputQuestion2.value,
-    form.inputQuestion3.value,
-    form.inputQuestion4.value
-  ]
+  correctAnswers.forEach((_, index) => {
+    const userAnswer = form[`inputQuestion${index + 1}`].value
+    userAnswers.push(userAnswer)
+  })
 
+  return userAnswers
+}
+
+const calculateUserScore = userAnswers => {
   userAnswers.forEach((userAnswer, index) => {
-    if (userAnswer === correctAnswers[index]) {
+    const correctAnswer = userAnswer === correctAnswers[index]
+
+    if (correctAnswer) {
       score += 25
     }
   })
@@ -52,12 +33,8 @@ const incrementCounter = () => {
       clearInterval(timer)
     }
 
-    scoreText.innerText = `${counter}%`
-
-    setTimeout(() => {
-      counter++
-    }, 500);
-  }, 10);
+    scoreText.innerText = `${counter++}%`
+  }, 25);
 }
 
 const goUpSmoothly = (top, left) => {
@@ -68,17 +45,21 @@ const goUpSmoothly = (top, left) => {
   })
 }
 
+const showFinalScore = () => {
+  goUpSmoothly(0, 0)
+  resultContainer.classList.remove('d-none')
+}
+
 const submitAnswers = event => {
   event.preventDefault()
 
-  checkAnswers()
+  score = 0
 
-  goUpSmoothly(0, 0)
+  const userAnswers = getUserAnswers()
 
-  result.classList.remove('d-none')
-
+  calculateUserScore(userAnswers)
+  showFinalScore()
   incrementCounter()
 }
 
 form.addEventListener('submit', submitAnswers)
-
