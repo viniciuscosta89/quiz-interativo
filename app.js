@@ -44,9 +44,11 @@ const showFinalScore = () => {
 const submitAnswers = event => {
   event.preventDefault()
 
-  score = 0
-
   const userAnswers = getUserAnswers()
+
+  if (score > 0) {
+    score = 0
+  }
 
   calculateUserScore(userAnswers)
   showFinalScore()
